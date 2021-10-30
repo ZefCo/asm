@@ -4,7 +4,7 @@ def newt(a: (float or int),
         threshold: float = 10**-10, 
         dx0: (float or int) = 1, 
         delta: (float or int) = 1, 
-        n_period: (float or int) = 2, 
+        n_period: (float or int) = 1, 
         e: float = 10**-7,
         safety=10**5):
     '''
@@ -71,11 +71,11 @@ def main():
     '''
     This does nothing more then execute the code. It is composed of function calls.
     '''
-    a0 = 3.6
+    a0 = 3.5
     x0 = 0.5
     n_period = 2
     threshold = 10**-13
-    safety = 10**6
+    safety = 10**8
     e = 10**-7
     # e = 1
 
