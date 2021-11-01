@@ -1,0 +1,13 @@
+d:\Coding\asm\rustic_version\target\debug\deps\cc-a902624a6605a077.rmeta: C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\lib.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\registry.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\winapi.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\com.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\setup_config.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\vs_instances.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\windows_registry.rs
+
+d:\Coding\asm\rustic_version\target\debug\deps\libcc-a902624a6605a077.rlib: C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\lib.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\registry.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\winapi.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\com.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\setup_config.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\vs_instances.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\windows_registry.rs
+
+d:\Coding\asm\rustic_version\target\debug\deps\cc-a902624a6605a077.d: C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\lib.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\registry.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\winapi.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\com.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\setup_config.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\vs_instances.rs C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\windows_registry.rs
+
+C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\lib.rs:
+C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\registry.rs:
+C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\winapi.rs:
+C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\com.rs:
+C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\setup_config.rs:
+C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\vs_instances.rs:
+C:\Users\tokyo\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.71\src\windows_registry.rs:

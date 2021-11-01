@@ -1,1 +1,1 @@
-/home/ethanspeakman/Coding/Python/asm/rustic_version/target/debug/Rust: /home/ethanspeakman/Coding/Python/asm/rustic_version/src/main.rs
+D:\Coding\asm\rustic_version\target\debug\Rust.exe: D:\Coding\asm\rustic_version\src\main.rs
