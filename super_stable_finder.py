@@ -8,7 +8,8 @@ def newt(a: (float or int),
         e: float = 10**-7,
         safety=10**5):
     '''
-    This is not working yet. For some reason it just iterates until I tell it to stop.
+    This checks for a super stable point. Then it preforms a functional call to find the 
+    height at that value of a (here called displacement)
     '''
 
     if abs(delta) < threshold:
@@ -18,6 +19,9 @@ def newt(a: (float or int),
 
         period = 2**n_period
         i = 0
+
+        # fNext = lambda a, f: a*f*(1 - f)
+        # dfNext = lambda a, f, daf: f*(1 - f) + a*(1 - 2*f)*daf
 
         while abs(delta) > threshold:
             x = x0
@@ -39,10 +43,25 @@ def newt(a: (float or int),
                 print(f'Breaking, i is greater then safety, i={i}')
                 break
 
-        print(f'############\nn = {n_period}\na = {a}\n############')
+        print(f'############\nn = {n_period}\na = {a}\n$ $ $')
+
+        displace = peak(a, x0, period)
+
+        print(f'$ $ $\ndispalce = {displace}\n############')
 
         # while abs(x) > threshold:
         #     x = f(a, x)
+
+
+def peak(a, x0, period):
+    x = x0
+
+    for _ in range(1, int(period / 2)):
+        x = f(a, x)
+
+    displace = x - x0
+
+    return displace
 
 
 def f(a: float, x: float):
@@ -67,13 +86,20 @@ def df(a: float, x: float, dx: float) -> float:
     return dx
 
 
+def a_predicts(a: (float or int), a_p: (float or int), d = 4.66):
+
+    a_new = a + (a - a_p)/d
+
+    return a_new
+
+
 def main():
     '''
     This does nothing more then execute the code. It is composed of function calls.
     '''
-    a0 = 3.5
+    a0 = 3.55
     x0 = 0.5
-    n_period = 2
+    n_period = 3
     threshold = 10**-13
     safety = 10**8
     e = 10**-7
@@ -81,6 +107,31 @@ def main():
 
     newt(a0, x0, n_period=n_period, safety=safety, e=e, threshold=threshold)
 
+def test():
+    f = 0.5
+    a = 3.5
+
+    fNext = lambda x, y: x*y*(1 - y)
+    dfNext = lambda a, f, daf: f*(1 - f) + a*(1 - 2*f)*daf
+
+    f_1 = fNext
+
+    f_2 = fNext(a, f)
+    f_3 = f_1(a, f)
+
+    print(f'f_1 = {f_1}')
+    print(f'f_2 = {f_2}')
+    print(f'f_3 = {f_3}')
+
+
+
+# def fNext(a, f):
+#     y = a * f * (1 - f)
+
+#     return y
+
 
 if __name__ in '__main__':
     main()
+
+    # test()
