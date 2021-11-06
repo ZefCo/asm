@@ -97,12 +97,12 @@ def main():
     '''
     This does nothing more then execute the code. It is composed of function calls.
     '''
-    a0 = 3.55
-    x0 = 0.5
-    n_period = 3
-    threshold = 10**-13
-    safety = 10**8
-    e = 10**-7
+    a0: float = 3.3
+    x0: float = 0.5
+    n_period: int = 1
+    threshold: float = 10**-13
+    safety: float = 10**8
+    e: float = 10**-7
     # e = 1
 
     newt(a0, x0, n_period=n_period, safety=safety, e=e, threshold=threshold)

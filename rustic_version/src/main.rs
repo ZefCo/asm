@@ -1,9 +1,18 @@
+// use std::fs::File;
+// use std::io::{Error, Write};
+use std::f64::consts::PI;
+
 fn main() {
 
-    let feigenbaum_constant = |a: f64, b: f64, c: f64| -> f64 {(b - c)/(a - b)};
+    // ===========================================================================================
+    // This part here is for calculating the fiegenbaum constants by hand. It outputs a and d, and
+    // you can collect those on your own to figure out what delta and alpha are.
+    // ===========================================================================================
+    // let a_next_guess = |a: f64, b: f64| -> f64 {a + (a - b)/(4.66)};
 
-    // let n_period: u32 = 1;
-    // let a0: f64 = 3.1;
+    // let n_period: u32 = 3;
+    // let a0: f64 = 0.86;
+    // let ap: f64 = 0.84;
 
     // let x0: f64 = 0.5;
     // let _dx0: f64 = 1.0;
@@ -13,22 +22,15 @@ fn main() {
     // let threshold = f64::powf(10.0, -15.0);
     // let max_steps = u64::pow(10, 10);
 
-    // let _a: f64 = newtons_loop(a0, x0, n_period, delta0, e, threshold, max_steps);
+    // let a: f64 = newtons_loop(a0, x0, n_period, delta0, e, threshold, max_steps);
 
-    // let (a, delta) = newtons_loop(3.55, 0.5, 3, 1.0, f64::powf(10.0, -7.0), f64::powf(10.0, -7.0), u64::pow(10, 10));
-    // let d = f_peak(a, 0.5, i32::pow(2, 2));
+    // let d = f_peak(a, x0, i32::pow(2, n_period));
 
-    let n_input: u32 = 2;
-    let a_input: f64 = 3.5;
+    // let a_next: f64 = a_next_guess(a, ap);
 
-    let f_steps: u32 = 13;
-
-    // let a_test: f64 = newtons_loop(3.1, 0.5, 2, 1.0, e, threshold, max_steps);
-
-    // println!("a = {}", a_test)
-    // let a_input: f64 = 3.51;
-
-    // let ((a_n, a_nn, a_nnn), (d_n, d_nn, d_nnn)) = figenbaum_numbers_old(a_input, n_input);
+    // println!("a{} = {}", n_period, a);
+    // println!("d{} = {}", n_period, d);
+    // println!("a{} ~ {}", n_period + 1, a_next);
 
     // let a = delta(a_nnn, a_nn, a_n);
     // let d = delta(d_nnn, d_nn, d_n);
@@ -37,22 +39,36 @@ fn main() {
     // println!("a{} = {}, a{} = {}, a{} = {}", n_input, a_n, n_input + 1, a_nn, n_input + 2, a_nnn);
     // println!("d{} = {}, d{} = {}, d{} = {}", n_input, d_n, n_input + 1, d_nn, n_input + 2, d_nnn);
 
-    let (a_vec, d_vec) = figenbaum_numbers(a_input, n_input, f_steps);
+    // ==============================================================================================
+    // This part of the code allows a for loop to go over several values of a, guesses the next one,
+    // and calculates the feigenbaum constants. It does everything. Also it's not perfect and doesn't
+    // seem to like working on anything other then a loop that starts at n=2 with a=3.5
+    // ==============================================================================================
 
-    // println!("a = {:?}", a_vec);
-    // println!("d = {:?}", d_vec);
+    let feigenbaum_constant = |a: f64, b: f64, c: f64| -> f64 {(b - c)/(a - b)};
+
+    let n_input: u32 = 1;
+    let a_input: f64 = 3.3;
+    let a_stable: f64 = 2.0;
+
+    let f_steps: u32 = 8;
+
+    let (a_vec, d_vec) = figenbaum_numbers(a_input, n_input, f_steps, a_stable);
+
+    println!("###################\nSuper Stable Values\n#");
+    for ii in 0..a_vec.len() {
+        println!("\ta{} = {}\t\td{} = {}", ii + 1, a_vec[ii], ii + 1, d_vec[ii])
+    }
 
     let i: usize = a_vec.len();
-    // let j: usize = d_vec.len();
 
+    println!("###################\nFigenbaum Constants\n#");
     for ii in 0..(i - 2){
         let de = feigenbaum_constant(a_vec[ii + 2], a_vec[ii + 1], a_vec[ii]);
-        let al = feigenbaum_constant(d_vec[ii + 2], d_vec[ii +1], d_vec[ii]);
+        let al = feigenbaum_constant(d_vec[ii + 2], d_vec[ii + 1], d_vec[ii]);
 
-        println!("Fiegenbaum delta = {}", de);
-        println!("Fiegenbaum alpha = {}", al)
+        println!("\tFiegenbaum delta = {}\tFiegenbaum alpha = {}", de, al);
 
-        // println!("i = {}", ii)
     }
 
 }
@@ -74,6 +90,23 @@ fn dfofax(a: f64,
 
     return return_dx
 }
+
+
+fn sofax(a: f64,
+         x: f64) -> f64 {
+    let return_x: f64 = a*(x*PI).sin();
+
+    return return_x
+         }
+
+
+fn dsofax(a: f64,
+          x: f64,
+          dx: f64) -> f64 {
+    let return_dx: f64 = (x*PI).sin() + a*(x*PI).cos()*dx;
+
+    return return_dx
+          }
 
 
 fn newtons_loop(a0: f64, 
@@ -118,6 +151,8 @@ fn newtons_loop(a0: f64,
 
                 let xx: f64 = fofax(a, x);
                 let dxx: f64 = dfofax(a, x, dx);
+                // let xx: f64 = sofax(a, x);
+                // let dxx: f64 = dsofax(a, x, dx);
     
                 x = xx;
                 dx = dxx;
@@ -174,6 +209,7 @@ fn f_peak(a: f64, f0: f64, period: i32) -> f64 {
 
     for _k in 1..=period/2 {
         f = fofax(a, f);
+        // f = sofax(a, f);
     }
 
     let displace: f64 = f - f0;
@@ -228,7 +264,7 @@ fn f_peak(a: f64, f0: f64, period: i32) -> f64 {
 // }
 
 
-fn figenbaum_numbers(a_guess: f64, n_start: u32, steps: u32) -> (Vec<f64>, Vec<f64>) {
+fn figenbaum_numbers(a_guess: f64, n_start: u32, steps: u32, a_start: f64) -> (Vec<f64>, Vec<f64>) {
 
     let a_next_guess = |a: f64, b: f64| -> f64 {a + (a - b)/(4.66)};
     let n_next = |n: u32| -> u32 {n + 1};
@@ -238,7 +274,7 @@ fn figenbaum_numbers(a_guess: f64, n_start: u32, steps: u32) -> (Vec<f64>, Vec<f
     let mut n: u32 = n_start;
 
     let mut a_0: f64 = a_guess;
-    let mut a_p: f64 = 3.0;
+    let mut a_p: f64 = a_start;
 
     let x0: f64 = 0.5;
 
