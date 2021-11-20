@@ -1,3 +1,5 @@
+import numpy as np
+
 
 def newt(a: (float or int), 
         x0: (float or int), 
@@ -64,6 +66,11 @@ def peak(a, x0, period):
     return displace
 
 
+def sin_fun(a: float, x: float):
+    x = a*np.sin(np.pi * x)
+
+    return x
+
 def f(a: float, x: float):
     '''
     Function f. Written as f(a, x) = a*x(1-x), it returns f(x), here written as x.
@@ -97,9 +104,9 @@ def main():
     '''
     This does nothing more then execute the code. It is composed of function calls.
     '''
-    a0: float = 3.3
+    a0: float = 0.6
     x0: float = 0.5
-    n_period: int = 1
+    n_period: int = 0
     threshold: float = 10**-13
     safety: float = 10**8
     e: float = 10**-7
